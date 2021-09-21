@@ -13,8 +13,8 @@ del session_config['session_backing']
 
 app = Bottle()
 
-BottleSessions(app, session_backing=r, **session_config)
-saml = SamlSP(app, saml_config)
+sess = BottleSessions(app, session_backing=r, **session_config)
+saml = SamlSP(app, sess, saml_config)
 
 CasBridge(app, saml, cas_config, r, saml.log)
 
