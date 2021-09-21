@@ -47,7 +47,7 @@ from config import saml_config, session_config, cas_config
 app = Bottle()
 
 ses = BottleSession(app, session_config)
-saml = SamlSP(app, saml_config)
+saml = SamlSP(app, ses, saml_config)
 cas = CasBridge(app,auth=saml,config=cas_config, backing=ses.backing)
 
 app.run()
